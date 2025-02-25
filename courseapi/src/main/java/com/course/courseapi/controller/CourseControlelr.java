@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.course.courseapi.entity.Course;
 import com.course.courseapi.service.CourseService;
+import com.course.courseapi.service.CourseServiceImp;
 
 @RestController
 public class CourseControlelr {
 
     @Autowired
-    private CourseService courseService;
+    private CourseServiceImp courseService;
 
     @GetMapping("/home")
     public String home(){
@@ -25,6 +26,7 @@ public class CourseControlelr {
 
     //Get Courses
     @GetMapping("/courses")
+    // Give Error
     public List<Course> getcourses(){
         return this.courseService.getcourses();
     }
@@ -38,6 +40,7 @@ public class CourseControlelr {
     // Add Cousre
     @PostMapping("/courses" )
     public Course addCousre(@RequestBody Course cousre){
+        System.out.println("run here");
         return this.courseService.addcourse(cousre);
     }
 }
