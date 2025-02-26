@@ -30,8 +30,14 @@ public class CourseServiceImp implements CourseService{
         return (List<Course>) courseRepository.findAll();
     }
     @Override
-        public Course getcourses(long id) {
-        return courseRepository.findById(id);
+        public Course getcourses(int id) {
+            Course course=null;
+       try {
+        course= courseRepository.findById(id);
+       } catch (Exception e) {
+        e.printStackTrace();
+       }
+       return course;
     }
     @Override
     public Course addcourse(Course course) {
@@ -41,5 +47,15 @@ public class CourseServiceImp implements CourseService{
             System.out.println(e);
            throw e;
         }
+    }
+    @Override
+    public void deleteCourse(int id) {
+        Integer courseId = (int) id;  // Manual cast from long to int
+        // TODO Auto-generated method stub
+        Course course=courseRepository.findById(id);
+        if(course==null){
+            return;
+        }
+        courseRepository.deleteById(courseId);
     }
 }

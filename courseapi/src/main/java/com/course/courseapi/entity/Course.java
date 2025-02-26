@@ -1,9 +1,11 @@
 package com.course.courseapi.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,14 +17,16 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String title;
-    private String description;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Description description;
     public void setId(long id) {
         this.id = id;
     }
     public void setTitle(String title) {
         this.title = title;
     }
-    public void setDescription(String description) {
+    public void setDescription(Description description) {
         this.description = description;
     }
     public long getId() {
@@ -31,10 +35,10 @@ public class Course {
     public String getTitle() {
         return title;
     }
-    public String getDescription() {
+    public Description getDescription() {
         return description;
     }
-    public Course(long id, String title, String description) {
+    public Course(long id, String title, Description description) {
         this.id = id;
         this.title = title;
         this.description = description;

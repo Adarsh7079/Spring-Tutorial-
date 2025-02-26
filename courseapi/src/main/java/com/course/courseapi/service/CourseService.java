@@ -6,7 +6,8 @@ import com.course.courseapi.entity.Course;
 
 public interface CourseService {
     public List<Course> getcourses();
-    public Course getcourses(long id);
+    public Course getcourses(int id);
     public Course addcourse(Course course);
+    public void deleteCourse(int id);
 
 }
