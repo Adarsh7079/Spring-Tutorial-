@@ -1,5 +1,7 @@
 package com.course.courseapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ public class Course {
     private String title;
 
     @OneToOne(cascade = CascadeType.PERSIST)
+    @JsonManagedReference
     private Description description;
     public void setId(long id) {
         this.id = id;

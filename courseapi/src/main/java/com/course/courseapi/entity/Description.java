@@ -1,10 +1,13 @@
 package com.course.courseapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Description {
@@ -14,6 +17,16 @@ public class Description {
 
     private float course_price;
     private String overview;
+
+    @OneToOne(mappedBy = "description")
+    @JsonBackReference
+    private Course course;
+    public Course getCourse() {
+        return course;
+    }
+    public void setCourse(Course course) {
+        this.course = course;
+    }
     public Description() {
     }
     public Description( float course_price, String overview,int course_id) {
