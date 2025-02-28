@@ -1,7 +1,6 @@
 package com.course.courseapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
