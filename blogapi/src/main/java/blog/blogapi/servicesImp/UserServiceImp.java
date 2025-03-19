@@ -35,7 +35,7 @@ public class UserServiceImp implements UserService {
     @Override
     public UserDto updateUser(UserDto userDto, Integer userId) {
         User user = this.userRepo.findById(userId)
-                .orElseThrow(() -> new ReourceNotFoundException("User", "Id", userId));
+        .orElseThrow(() -> new ReourceNotFoundException("User", "Id", userId));
 
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
